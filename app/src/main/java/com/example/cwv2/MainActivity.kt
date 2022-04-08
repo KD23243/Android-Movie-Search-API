@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     movieDao.insertMovies(movie1,movie2,movie3,movie4,movie5)
                 }
             }
-            Toast.makeText(applicationContext, "Data saved to the room library", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Data saved to the room library.", Toast.LENGTH_LONG).show()
         }
 
         searchMoviesButton.setOnClickListener {
