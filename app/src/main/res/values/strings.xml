@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Course Work 2</string>
+    <string name="search_for_actors">Search for Actors</string>
+    <string name="search_all_movies">Search all Movies</string>
+    <string name="search_for_movies">Search for Movies</string>
+    <string name="add_movies_to_db">Add Movies to DB</string>
+</resources>

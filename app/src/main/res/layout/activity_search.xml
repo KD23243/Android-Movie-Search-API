@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_marginTop="50dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:hint="Enter Movie Name"
+        android:background="@drawable/textbox"
+        android:textSize="15dp"
+        android:textColorHint="#888"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:id="@+id/editTextMovieName" />
+
+    <Button
+        android:layout_marginTop="30dp"
+        android:layout_width="200dp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"
+        android:textSize="15sp"
+        android:background="@drawable/button"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Retrieve Movie"
+        android:id="@+id/retrieveMovieButton"/>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/saveMovieButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button"
+        android:text="Save movie to Database"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"
+        android:textSize="15sp" />
+
+    <ProgressBar
+        android:id="@+id/progress_loader"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="#db3445"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_gravity="center"
+        android:layout_width="380dp"
+        android:layout_height="380dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
