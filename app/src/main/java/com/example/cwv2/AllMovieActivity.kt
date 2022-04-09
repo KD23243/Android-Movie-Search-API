@@ -3,12 +3,10 @@ package com.example.cwv2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.TextView
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,19 +31,21 @@ class AllMovieActivity : AppCompatActivity() {
         val retrieveMovieButton = findViewById<Button>(R.id.retrieveMovieButton)
         val editTextMovieName = findViewById<EditText>(R.id.editTextMovieName)
 
-        retrieveMovieButton.setOnClickListener(){
+        retrieveMovieButton.setOnClickListener() {
 
             try {
-                val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm: InputMethodManager =
+                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
             } catch (e: java.lang.Exception) {
-                Log.d("Keyboard Hiding","Failed")
+                Log.d("Keyboard Hiding", "Failed")
             }
 
             val searchPhrase = editTextMovieName.text.toString()
 
             val stb = StringBuilder()
-            val url_string = "https://www.omdbapi.com/?s=*" + searchPhrase + "*&apikey=8e43b6ad&page=1"
+            val url_string =
+                "https://www.omdbapi.com/?s=*" + searchPhrase + "*&apikey=8e43b6ad&page=1"
             val url = URL(url_string)
             val con: HttpURLConnection = url.openConnection() as HttpURLConnection
 
@@ -84,7 +84,7 @@ class AllMovieActivity : AppCompatActivity() {
             saved = allMovieNames.toString()
             textView.text = allMovieNames.toString()
 
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Log.d("Error", "Failed")
         }
     }

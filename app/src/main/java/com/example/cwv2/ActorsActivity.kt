@@ -31,45 +31,48 @@ class ActorsActivity : AppCompatActivity() {
 
         titleInActor.visibility = View.INVISIBLE
 
-        val database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
+        val database =
+            Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase")
+                .build()
         val movieDao = database.movieDao()
 
         actorSearchButton.setOnClickListener {
-
             try {
-                val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm: InputMethodManager =
+                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
             } catch (e: java.lang.Exception) {
-                Log.d("Keyboard Hiding","Failed")
+                Log.d("Keyboard Hiding", "Failed")
             }
             titleInActor.text = ""
             val userString = editTextActorNames.text
             var output = ""
 
-            if (TextUtils.isEmpty(userString)){
+            if (TextUtils.isEmpty(userString)) {
                 titleInActor.visibility = View.INVISIBLE
-                Toast.makeText(applicationContext, "Field Cannot Be Empty", Toast.LENGTH_LONG).show()
-            }else{
+                Toast.makeText(applicationContext, "Field Cannot Be Empty", Toast.LENGTH_LONG)
+                    .show()
+            } else {
                 runBlocking {
                     launch {
                         val movies: List<Movie> = movieDao.getAll()
                         val titleInActor = findViewById<TextView>(R.id.titleinActor)
 
                         val tempMovieArray = ArrayList<String>()
-                        for (item in movies){
+                        for (item in movies) {
                             var dataString = item.actors
                             dataString = dataString!!.replace(", ", ",")
                             val actorArray: List<String> = dataString.split(",")
 
-                            for (item1 in actorArray){
-                                if (item1.contains(userString, ignoreCase = true)){
+                            for (item1 in actorArray) {
+                                if (item1.contains(userString, ignoreCase = true)) {
                                     tempMovieArray.add(item.tittle.toString())
                                 }
                             }
                         }
                         val duplicateDeleted: Set<String> = HashSet<String>(tempMovieArray)
 
-                        for (item1 in duplicateDeleted){
+                        for (item1 in duplicateDeleted) {
                             output = output + "\n" + item1 + "\n"
                         }
                         titleInActor.visibility = View.VISIBLE
@@ -102,6 +105,9 @@ class ActorsActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(com.google.android.material.R.anim.abc_fade_in, com.google.android.material.R.anim.abc_fade_out)
+        overridePendingTransition(
+            com.google.android.material.R.anim.abc_fade_in,
+            com.google.android.material.R.anim.abc_fade_out
+        )
     }
 }

@@ -38,10 +38,11 @@ class SearchActivity : AppCompatActivity() {
             progressLoader.visibility = View.VISIBLE
             movieDetailsTextView.text = ""
             try {
-                val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                val imm: InputMethodManager =
+                    getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
             } catch (e: java.lang.Exception) {
-                Log.d("Keyboard Hiding","Failed")
+                Log.d("Keyboard Hiding", "Failed")
             }
             searchMovie(it)
             progressLoader.visibility = View.INVISIBLE
@@ -50,12 +51,13 @@ class SearchActivity : AppCompatActivity() {
 
     private fun searchMovie(v: View?) {
         val editTextMovieName = findViewById<EditText>(R.id.editTextMovieName)
-        val movieURL = "https://www.omdbapi.com/?t=" + editTextMovieName.text + "&apikey=8e43b6ad&plot=full"
+        val movieURL =
+            "https://www.omdbapi.com/?t=" + editTextMovieName.text + "&apikey=8e43b6ad&plot=full"
         getData(movieURL)
     }
 
     @SuppressLint("SetTextI18n")
-    fun processData(){
+    fun processData() {
         val saveMovieButton = findViewById<Button>(R.id.saveMovieButton)
         val movieDetailsTextView = findViewById<TextView>(R.id.movieDetailsTextView)
 
@@ -75,33 +77,50 @@ class SearchActivity : AppCompatActivity() {
             val plot = movie.plot
 
             val output = "Title: $title \n" +
-                        "Year: $year \n" +
-                        "rated: $rated \n" +
-                        "released: $released \n" +
-                        "runtime: $runtime \n" +
-                        "genre: $genre \n" +
-                        "director: $director \n" +
-                        "writer: $writer \n" +
-                        "actors: $actors \n\n" +
-                        "plot: $plot \n"
+                    "Year: $year \n" +
+                    "Rated: $rated \n" +
+                    "Released: $released \n" +
+                    "Runtime: $runtime \n" +
+                    "Genre: $genre \n" +
+                    "Director: $director \n" +
+                    "Writer: $writer \n" +
+                    "Actors: $actors \n\n" +
+                    "Plot: $plot \n"
 
             saved = output
             movieDetailsTextView.text = output
 
             val imageURL = movie.poster
-            Log.d("Poster",imageURL)
+            Log.d("Poster", imageURL)
 
             saveMovieButton.setOnClickListener {
-                val database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
+                val database = Room.databaseBuilder(
+                    applicationContext,
+                    AppDatabase::class.java,
+                    "roomDataBase"
+                ).build()
                 val movieDao = database.movieDao()
 
                 runBlocking {
                     launch {
-                        val movie = Movie(0,movie.title,movie.year,movie.rated, movie.released,movie.runtime,movie.genre,movie.director, movie.writer,movie.actors, movie.plot)
+                        val movie = Movie(
+                            0,
+                            movie.title,
+                            movie.year,
+                            movie.rated,
+                            movie.released,
+                            movie.runtime,
+                            movie.genre,
+                            movie.director,
+                            movie.writer,
+                            movie.actors,
+                            movie.plot
+                        )
                         movieDao.insertMovies(movie)
                     }
                 }
-                Toast.makeText(applicationContext, "Movie Saved To The Database", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Movie Saved To The Database", Toast.LENGTH_LONG)
+                    .show()
             }
         } catch (e: JSONException) {
             Toast.makeText(this@SearchActivity, e.message, Toast.LENGTH_LONG).show()
@@ -155,6 +174,9 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(com.google.android.material.R.anim.abc_fade_in, com.google.android.material.R.anim.abc_fade_out)
+        overridePendingTransition(
+            com.google.android.material.R.anim.abc_fade_in,
+            com.google.android.material.R.anim.abc_fade_out
+        )
     }
 }
