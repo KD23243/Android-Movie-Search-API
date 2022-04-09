@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-        val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
-        val movieDao = db.movieDao()
+        val database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
+        val movieDao = database.movieDao()
 
         val addToDbButton = findViewById<Button>(R.id.addToDbButton)
         val searchMoviesButton = findViewById<Button>(R.id.searchMoviesButton)
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     movieDao.insertMovies(movie1,movie2,movie3,movie4,movie5)
                 }
             }
-            Toast.makeText(applicationContext, "Data saved to the room library", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Data Saved To The Database", Toast.LENGTH_LONG).show()
         }
 
         searchMoviesButton.setOnClickListener {

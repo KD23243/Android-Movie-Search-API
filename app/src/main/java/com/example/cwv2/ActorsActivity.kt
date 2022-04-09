@@ -18,7 +18,7 @@ import kotlinx.coroutines.runBlocking
 @Suppress("NAME_SHADOWING")
 class ActorsActivity : AppCompatActivity() {
 
-    private var saved2 = ""
+    private var saved = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,12 +31,10 @@ class ActorsActivity : AppCompatActivity() {
 
         titleInActor.visibility = View.INVISIBLE
 
-        val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
-        val movieDao = db.movieDao()
+        val database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
+        val movieDao = database.movieDao()
 
         actorSearchButton.setOnClickListener {
-
-            editTextActorNames.requestFocus()
 
             try {
                 val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -75,7 +73,7 @@ class ActorsActivity : AppCompatActivity() {
                             output = output + "\n" + item1 + "\n"
                         }
                         titleInActor.visibility = View.VISIBLE
-                        saved2 = output
+                        saved = output
                         titleInActor.text = output
                     }
                 }
@@ -84,7 +82,7 @@ class ActorsActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
-        savedInstanceState.putString("actorDetails", saved2)
+        savedInstanceState.putString("actorDetails", saved)
         super.onSaveInstanceState(savedInstanceState)
     }
 

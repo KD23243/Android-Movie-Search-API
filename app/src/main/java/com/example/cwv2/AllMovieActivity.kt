@@ -42,10 +42,10 @@ class AllMovieActivity : AppCompatActivity() {
                 Log.d("Keyboard Hiding","Failed")
             }
 
-            val asd = editTextMovieName.text.toString()
+            val searchPhrase = editTextMovieName.text.toString()
 
             val stb = StringBuilder()
-            val url_string = "https://www.omdbapi.com/?s=*" + asd + "*&apikey=8e43b6ad&page=1"
+            val url_string = "https://www.omdbapi.com/?s=*" + searchPhrase + "*&apikey=8e43b6ad&page=1"
             val url = URL(url_string)
             val con: HttpURLConnection = url.openConnection() as HttpURLConnection
 

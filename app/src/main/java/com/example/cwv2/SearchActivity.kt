@@ -19,7 +19,6 @@ import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.String as String1
 
-
 class SearchActivity : AppCompatActivity() {
 
     lateinit var jsonData: String1
@@ -33,12 +32,11 @@ class SearchActivity : AppCompatActivity() {
 
         val retrieveMovieButton = findViewById<Button>(R.id.retrieveMovieButton)
         val progressLoader = findViewById<ProgressBar>(R.id.progress_loader)
-        val textView = findViewById<TextView>(R.id.textView)
+        val movieDetailsTextView = findViewById<TextView>(R.id.movieDetailsTextView)
 
         retrieveMovieButton.setOnClickListener {
-
             progressLoader.visibility = View.VISIBLE
-            textView.text = ""
+            movieDetailsTextView.text = ""
             try {
                 val imm: InputMethodManager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(currentFocus!!.windowToken, 0)
@@ -51,23 +49,20 @@ class SearchActivity : AppCompatActivity() {
     }
 
     private fun searchMovie(v: View?) {
-
         val editTextMovieName = findViewById<EditText>(R.id.editTextMovieName)
         val movieURL = "https://www.omdbapi.com/?t=" + editTextMovieName.text + "&apikey=8e43b6ad&plot=full"
-
         getData(movieURL)
     }
 
     @SuppressLint("SetTextI18n")
     fun processData(){
-
         val saveMovieButton = findViewById<Button>(R.id.saveMovieButton)
+        val movieDetailsTextView = findViewById<TextView>(R.id.movieDetailsTextView)
 
         movie = MovieDetails()
+
         try {
             movie.mapJson(jsonData)
-            val textView = findViewById<TextView>(R.id.textView)
-
             val title = movie.title
             val year = movie.year
             val rated = movie.rated
@@ -91,15 +86,14 @@ class SearchActivity : AppCompatActivity() {
                         "plot: $plot \n"
 
             saved = output
-            textView.text = output
+            movieDetailsTextView.text = output
 
             val imageURL = movie.poster
             Log.d("Poster",imageURL)
 
             saveMovieButton.setOnClickListener {
-
-                val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
-                val movieDao = db.movieDao()
+                val database = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase").build()
+                val movieDao = database.movieDao()
 
                 runBlocking {
                     launch {
@@ -107,9 +101,8 @@ class SearchActivity : AppCompatActivity() {
                         movieDao.insertMovies(movie)
                     }
                 }
-                Toast.makeText(applicationContext, "Movie saved into the local storage", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "Movie Saved To The Database", Toast.LENGTH_LONG).show()
             }
-
         } catch (e: JSONException) {
             Toast.makeText(this@SearchActivity, e.message, Toast.LENGTH_LONG).show()
         }
@@ -152,8 +145,8 @@ class SearchActivity : AppCompatActivity() {
         super.onRestoreInstanceState(savedInstanceState)
         val saved = savedInstanceState.getString("movieDetails")
 
-        val textView = findViewById<TextView>(R.id.textView)
-        textView.text = saved
+        val movieDetailsTextView = findViewById<TextView>(R.id.movieDetailsTextView)
+        movieDetailsTextView.text = saved
 
         val retrieveMovieButton = findViewById<Button>(R.id.retrieveMovieButton)
         retrieveMovieButton.performClick()
