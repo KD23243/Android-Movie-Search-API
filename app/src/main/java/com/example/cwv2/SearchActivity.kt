@@ -24,7 +24,7 @@ class SearchActivity : AppCompatActivity() {
 
     lateinit var jsonData: String1
     private lateinit var movie: MovieDetails
-    private var saved1 = ""
+    private var saved = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,7 +90,7 @@ class SearchActivity : AppCompatActivity() {
                         "actors: $actors \n\n" +
                         "plot: $plot \n"
 
-            saved1 = output
+            saved = output
             textView.text = output
 
             val imageURL = movie.poster
@@ -144,7 +144,7 @@ class SearchActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
-        savedInstanceState.putString("movieDetails", saved1)
+        savedInstanceState.putString("movieDetails", saved)
         super.onSaveInstanceState(savedInstanceState)
     }
 

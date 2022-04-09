@@ -23,7 +23,7 @@ import java.net.URL
 
 class AllMovieActivity : AppCompatActivity() {
 
-    private var saved2 = ""
+    private var saved = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,8 +64,6 @@ class AllMovieActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 
     suspend fun parseJSON(stb: java.lang.StringBuilder) {
@@ -83,7 +81,7 @@ class AllMovieActivity : AppCompatActivity() {
                 allMovieNames.append(title + "\n")
             }
             Log.d("Output", allMovieNames.toString())
-            saved2 = allMovieNames.toString()
+            saved = allMovieNames.toString()
             textView.text = allMovieNames.toString()
 
         }catch (e: Exception){
@@ -92,7 +90,7 @@ class AllMovieActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
-        savedInstanceState.putString("allMovieDetails", saved2)
+        savedInstanceState.putString("allMovieDetails", saved)
         super.onSaveInstanceState(savedInstanceState)
 
     }
