@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/searchActorButton"
-        android:layout_width="160dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:fontFamily="sans-serif"
@@ -18,14 +18,15 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.903" />
 
+
     <Button
         android:id="@+id/searchMoviesButton"
-        android:layout_width="160dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:fontFamily="sans-serif"
@@ -34,14 +35,14 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.719" />
 
     <Button
         android:id="@+id/addToDbButton"
-        android:layout_width="160dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:fontFamily="sans-serif"
@@ -50,14 +51,14 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.719" />
 
     <Button
         android:id="@+id/allMoviesButton"
-        android:layout_width="160dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button"
         android:fontFamily="sans-serif"
@@ -66,11 +67,10 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.661"
+        app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.903" />
-
 
     <ImageView
         android:id="@+id/imageView2"
@@ -81,7 +81,7 @@
         app:layout_constraintHorizontal_bias="0.499"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.113"
+        app:layout_constraintVertical_bias="0.101"
         app:srcCompat="@drawable/logo" />
 
     <TextView
@@ -90,8 +90,7 @@
         android:layout_height="wrap_content"
         android:text="ANDROID COURSEWORK"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:fontFamily="sans-serif"
+        android:fontFamily="sans-serif-condensed"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

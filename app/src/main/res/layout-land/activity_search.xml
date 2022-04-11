@@ -8,34 +8,34 @@
     android:orientation="vertical">
 
     <EditText
-        android:layout_marginTop="50dp"
+        android:id="@+id/editTextMovieName"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:hint="Enter Movie Name"
-        android:background="@drawable/textbox"
-        android:textSize="15dp"
-        android:textColorHint="#888"
-        android:textColor="@color/textBox"
         android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/textbox"
         android:gravity="center"
-        android:id="@+id/editTextMovieName" />
+        android:hint="Enter Movie Name"
+        android:textColor="@color/textBox"
+        android:textColorHint="#888"
+        android:textSize="15dp" />
 
     <Button
-        android:layout_marginTop="30dp"
-        android:layout_width="200dp"
-        android:textColor="@color/white"
-        android:fontFamily="sans-serif"
-        android:textSize="15sp"
-        android:background="@drawable/button"
+        android:id="@+id/retrieveMovieButton"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button"
+        android:fontFamily="sans-serif"
         android:text="Retrieve Movie"
-        android:id="@+id/retrieveMovieButton"/>
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <Button
         android:layout_marginTop="10dp"
         android:id="@+id/saveMovieButton"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="30dp"
@@ -48,8 +48,8 @@
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_gravity="center"
-        android:layout_width="380dp"
-        android:layout_height="360dp">
+        android:layout_width="600dp"
+        android:layout_height="120dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
 
             <TextView
                 android:id="@+id/movieDetailsTextView"
-                android:layout_width="330dp"
+                android:layout_width="600dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"

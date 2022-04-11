@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/addToDbButton"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/button"
         android:text="@string/add_movies_to_db"
@@ -24,7 +24,7 @@
 
     <Button
         android:id="@+id/searchActorButton"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/button"
         android:text="@string/search_for_actors"
@@ -39,7 +39,7 @@
 
     <Button
         android:id="@+id/searchMoviesButton"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/button"
         android:text="@string/search_for_movies"
@@ -54,7 +54,7 @@
 
     <Button
         android:id="@+id/allMoviesButton"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="50dp"
         android:background="@drawable/button"
         android:text="@string/search_all_movies"
@@ -69,8 +69,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="214dp"
-        android:layout_height="193dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -83,12 +83,11 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
         android:gravity="center_horizontal"
-        android:text="ANDROID\nCOURSEWORK"
+        android:text="OMDB API\nCOURSEWORK"
         android:textColor="@color/white"
         android:textSize="35sp"
-        android:textStyle="bold"
+        android:fontFamily="sans-serif-condensed"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
