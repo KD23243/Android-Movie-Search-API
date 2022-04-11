@@ -15,7 +15,7 @@
         android:background="@drawable/textbox"
         android:textSize="15dp"
         android:textColorHint="#888"
-        android:textColor="@color/white"
+        android:textColor="@color/textBox"
         android:layout_gravity="center"
         android:gravity="center"
         android:id="@+id/editTextMovieName" />
@@ -45,21 +45,12 @@
         android:fontFamily="sans-serif"
         android:textSize="15sp" />
 
-    <ProgressBar
-        android:id="@+id/progress_loader"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateTint="#db3445"
-        android:layout_centerInParent="true"
-        android:visibility="invisible" />
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_gravity="center"
         android:layout_width="380dp"
-        android:layout_height="380dp">
+        android:layout_height="360dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,7 +59,9 @@
 
             <TextView
                 android:id="@+id/movieDetailsTextView"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white" />
         </LinearLayout>

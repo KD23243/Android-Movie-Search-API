@@ -31,11 +31,9 @@ class SearchActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         val retrieveMovieButton = findViewById<Button>(R.id.retrieveMovieButton)
-        val progressLoader = findViewById<ProgressBar>(R.id.progress_loader)
         val movieDetailsTextView = findViewById<TextView>(R.id.movieDetailsTextView)
 
         retrieveMovieButton.setOnClickListener {
-            progressLoader.visibility = View.VISIBLE
             movieDetailsTextView.text = ""
             try {
                 val imm: InputMethodManager =
@@ -45,7 +43,6 @@ class SearchActivity : AppCompatActivity() {
                 Log.d("Keyboard Hiding", "Failed")
             }
             searchMovie(it)
-            progressLoader.visibility = View.INVISIBLE
         }
     }
 

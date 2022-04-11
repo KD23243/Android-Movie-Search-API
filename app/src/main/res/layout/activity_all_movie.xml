@@ -12,7 +12,7 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:hint="Enter All Movies"
-        android:textColor="@color/white"
+        android:textColor="@color/textBox"
         android:background="@drawable/textbox"
         android:textSize="15sp"
         android:textColorHint="#888"
@@ -32,7 +32,6 @@
         android:text="Retrieve Movies"
         android:layout_marginBottom="30dp"
         android:id="@+id/retrieveMovieButton"/>
-
 
     <ScrollView
         android:id="@+id/scrollView"
