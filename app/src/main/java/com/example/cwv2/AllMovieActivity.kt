@@ -80,12 +80,12 @@ class AllMovieActivity : AppCompatActivity() {
                 val title = cocktail["Title"] as String
                 allMovieNames.append(title + "\n")
             }
-            Log.d("Output", allMovieNames.toString())
+            Log.d("Output Tester", allMovieNames.toString())
             saved = allMovieNames.toString()
             textView.text = allMovieNames.toString()
 
         } catch (e: Exception) {
-            Log.d("Error", "Failed")
+            Log.d("Parsing The Json Object", "Failed")
         }
     }
 

@@ -18,25 +18,30 @@ import kotlinx.coroutines.runBlocking
 @Suppress("NAME_SHADOWING")
 class ActorsActivity : AppCompatActivity() {
 
-    private var saved = ""
+    private var saved = ""  //The variable that will be used for restoring the instance state.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actors)
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+        //Buttons and text boxes used in the activity.
         val editTextActorNames = findViewById<EditText>(R.id.editTextactorNames)
         val actorSearchButton = findViewById<Button>(R.id.actorSearchButton)
         val titleInActor = findViewById<TextView>(R.id.titleinActor)
 
-        titleInActor.visibility = View.INVISIBLE
+        titleInActor.visibility = View.INVISIBLE    //Hiding the tittle textview at the beginning.
 
+        //Loading the room database.
         val database =
             Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase")
                 .build()
         val movieDao = database.movieDao()
 
+        //actorSearchButton on click listener.
         actorSearchButton.setOnClickListener {
+
+            //Hiding the keyboard after the button is clicked.
             try {
                 val imm: InputMethodManager =
                     getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -44,15 +49,18 @@ class ActorsActivity : AppCompatActivity() {
             } catch (e: java.lang.Exception) {
                 Log.d("Keyboard Hiding", "Failed")
             }
+
             titleInActor.text = ""
             val userString = editTextActorNames.text
             var output = ""
 
+            //Checking whether the edit text is empty or not.
             if (TextUtils.isEmpty(userString)) {
                 titleInActor.visibility = View.INVISIBLE
                 Toast.makeText(applicationContext, "Field Cannot Be Empty", Toast.LENGTH_LONG)
                     .show()
             } else {
+                //Creating a coroutine
                 runBlocking {
                     launch {
                         val movies: List<Movie> = movieDao.getAll()
@@ -84,11 +92,15 @@ class ActorsActivity : AppCompatActivity() {
         }
     }
 
+    /*  When the orientation of the device is changed onSaveInstanceState() will
+    *   be called. */
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         savedInstanceState.putString("actorDetails", saved)
         super.onSaveInstanceState(savedInstanceState)
     }
 
+    /*  When the orientation of the device is changed onRestoreInstanceState() will
+    *   be called and it will restore all the data. */
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
         val saved = savedInstanceState.getString("actorDetails")

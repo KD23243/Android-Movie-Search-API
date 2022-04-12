@@ -16,16 +16,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+        //Loading the room database.
         val database =
             Room.databaseBuilder(applicationContext, AppDatabase::class.java, "roomDataBase")
                 .build()
         val movieDao = database.movieDao()
 
+        //Buttons used in the activity.
         val addToDbButton = findViewById<Button>(R.id.addToDbButton)
         val searchMoviesButton = findViewById<Button>(R.id.searchMoviesButton)
         val searchActorButton = findViewById<Button>(R.id.searchActorButton)
         val allMoviesButton = findViewById<Button>(R.id.allMoviesButton)
 
+        /*  This saves the movie details specified in the text document to
+        *   the room library manually. */
         addToDbButton.setOnClickListener {
             runBlocking {
                 launch {
@@ -101,6 +105,7 @@ class MainActivity : AppCompatActivity() {
                 .show()
         }
 
+        //searchMoviesButton on click listener starts the search movies activity.
         searchMoviesButton.setOnClickListener {
             val intent = Intent(this@MainActivity, SearchActivity::class.java);
             startActivity(intent)
@@ -110,6 +115,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        //searchActorButton on click listener starts the search actors activity.
         searchActorButton.setOnClickListener {
             val intent = Intent(this@MainActivity, ActorsActivity::class.java);
             startActivity(intent)
@@ -119,6 +125,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        //allMoviesButton on click listener starts the search all movies activity.
         allMoviesButton.setOnClickListener {
             val intent = Intent(this@MainActivity, AllMovieActivity::class.java);
             startActivity(intent)
@@ -127,7 +134,6 @@ class MainActivity : AppCompatActivity() {
                 com.google.android.material.R.anim.abc_fade_out
             )
         }
-
     }
 
     override fun onBackPressed() {

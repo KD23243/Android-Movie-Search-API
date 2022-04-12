@@ -13,6 +13,7 @@ class Splash_Screen_Activity : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+        //The code for the splash screen.
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@Splash_Screen_Activity, MainActivity::class.java);
             startActivity(intent)
